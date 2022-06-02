@@ -26,7 +26,9 @@ describe('/company-details', () => {
         cy.get('[data-test="confirm-password"]').type(`${NEW_USER_PASSWORD}`)
         cy.get('[data-test="submit-sign-up"]').click()
 
-        
+        // wait for redirect to login first
+        cy.location('pathname').should('eq', '/login')
+
         // navigate to refresh and clear cy bug with detached email element
         cy.visit('http://localhost:3000/')  
         cy.location('pathname').should('eq', '/login')
