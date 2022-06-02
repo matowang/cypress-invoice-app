@@ -1,6 +1,8 @@
 {
   "scripts": {
-    "cypress": "cypress open"
+    "cypress": "cypress open",
+    "cypress-cli": "cypress run",
+    "cypress-debug": "ELECTRON_ENABLE_LOGGING=1 cypress open"
   },
   "dependencies": {
     "cypress": "^9.7.0"
