@@ -73,11 +73,11 @@ describe("/clients/*", () => {
         cy.get(`[data-test="client-company-vat"]`).type('1234')
 
 
-        cy.get(`[data-test="client-email-error"]`).should('not.be.visible')
+        cy.get(`[data-test="client-email-error"]`).should('have.length', 0)
         cy.get(`[data-test="client-name-error"]`).should('be.visible')
         cy.get(`[data-test="client-company-name-error"]`).should('be.visible')
         cy.get(`[data-test="client-company-address-error"]`).should('be.visible')
-        cy.get(`[data-test="client-company-vat-error"]`).should('not.be.visible')
+        cy.get(`[data-test="client-company-vat-error"]`).should('have.length', 0)
         cy.get(`[data-test="client-company-reg-error"]`).should('be.visible')
         cy.get(`[data-test="client-company-iban-error"]`).should('be.visible')
         cy.get(`[data-test="client-company-swift-error"]`).should('be.visible')    
