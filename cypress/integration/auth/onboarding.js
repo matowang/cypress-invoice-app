@@ -10,16 +10,16 @@ describe('/company-details', () => {
     const ONBOARDING_COMPANY_REG = '13214123'
     const ONBOARDING_COMPANY_IBAN = 'IGNBRO1321321421421'
     const ONBOARDING_COMPANY_SWIFT = 'IGNROBU'
-  
+
     it("cannot access company details when logged in", () => {
         cy.clearCookies()
-        cy.visit('http://localhost:3000/company-details')    
+        cy.visit('http://localhost:3000/company-details')
         cy.location('pathname').should('eq', '/login')
     })
 
     it('after signup and login, will see company details', () => {
         cy.clearCookies()
-        cy.visit('http://localhost:3000/signup')  
+        cy.visit('http://localhost:3000/signup')
         cy.get('[data-test="name"]').type(`${NEW_USER_NAME}`)
         cy.get('[data-test="email"]').type(`${NEW_USER_EMAIL}`)
         cy.get('[data-test="password"]').type(`${NEW_USER_PASSWORD}`)
@@ -30,20 +30,20 @@ describe('/company-details', () => {
         cy.location('pathname').should('eq', '/login')
 
         // navigate to refresh and clear cy bug with detached email element
-        cy.visit('http://localhost:3000/')  
+        cy.visit('http://localhost:3000/')
         cy.location('pathname').should('eq', '/login')
 
         cy.get('[data-test="email"]').type(`${NEW_USER_EMAIL}`)
         cy.get('[data-test="password"]').type(`${NEW_USER_PASSWORD}`)
         cy.get('[data-test="submit-login"]').click()
-  
+
         cy.location('pathname').should('eq', '/company-details')
 
 
-        cy.visit('http://localhost:3000/signup')  
+        cy.visit('http://localhost:3000/signup')
         cy.location('pathname').should('eq', '/company-details')
 
-        cy.visit('http://localhost:3000/')  
+        cy.visit('http://localhost:3000/')
         cy.location('pathname').should('eq', '/company-details')
     })
 
@@ -82,6 +82,7 @@ describe('/company-details', () => {
         cy.get('[data-test="email"]').type(`${NEW_USER_EMAIL}`)
         cy.get('[data-test="password"]').type(`${NEW_USER_PASSWORD}`)
         cy.get('[data-test="submit-login"]').click()
+        cy.location('pathname').should('eq', '/')
 
         cy.visit('http://localhost:3000/company-details')
 
